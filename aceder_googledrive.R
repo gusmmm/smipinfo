@@ -1,6 +1,10 @@
 library(googledrive)
 library(glue)
 library(tidyverse)
+library(readxl)
 
-x <- drive_get("~/smipinfo/dir_in")
-drive_get(as_id(x$id))
+drive_download(file = "~/smipinfo/dir_in/Doentes Internados.xls", overwrite = T)
+file.rename(from = "Doentes Internados.xls",to = "in/doentes_internados.xls")
+
+x <- "in/doentes_internados.xls"
+read_excel(x)
